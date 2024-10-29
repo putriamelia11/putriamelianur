@@ -1,0 +1,37 @@
+import React, { useState } from 'react';
+import './App.css';
+
+function App() {
+  const [selectedColor, setSelectedColor] = useState('blue');
+  const colors = ['red', 'yellow', 'blue', 'purple', 'green'];
+
+  const handleColorChange = (color) => {
+    setSelectedColor(color);
+  };
+
+  return (
+    <div className="App">
+      <h1 style={{ color: selectedColor }}>Warna Favorit Saya</h1>
+      <div className="color-options">
+        {colors.map((color) => (
+          <button
+            key={color}
+            onClick={() => handleColorChange(color)}
+            style={{
+              backgroundColor: color,
+              color: 'white',
+              padding: '10px 20px',
+              margin: '5px',
+              border: selectedColor === color ? '3px solid black' : '1px solid black',
+              cursor: 'pointer',
+            }}
+          >
+            {color}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default App;
